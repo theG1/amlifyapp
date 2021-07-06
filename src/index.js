@@ -1,67 +1,30 @@
-class Square extends React.Component {
-  render() {
-    return (
-      <button className="square">
-        {/* TODO */}
-      </button>
-    );
-  }
-}
+import React from 'react';
+import configureStore from './store/index';
+import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
+import reducer from './reducer/index';
+import App from './component/App'
+import './index.css';
 
-class Board extends React.Component {
-  renderSquare(i) {
-    return <Square />;
-  }
+const store = configureStore(reducer,{
+	"todos" : [
+		{"id":1, "todo":"빨래하기", "complete":false},
+		{"id":2, "todo":"청소하기", "complete":false},
+		{"id":3, "todo":"공부하기", "complete":false}
+	]
+});
 
-  render() {
-    const status = 'Next player: X';
+const render = () => {
+  ReactDOM.render(
+  	<Provider store={store}>
+	    <App/>
+    </Provider>,
+    document.getElementById('root')
+  )
+};
 
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
-}
-
-class Game extends React.Component {
-  render() {
-    return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
-      </div>
-    );
-  }
-}
-
-// ========================================
-
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);
-
+store.subscribe(render);
+render();
 
 
 
