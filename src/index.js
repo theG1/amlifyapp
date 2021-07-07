@@ -1,31 +1,19 @@
 import React from 'react';
-import configureStore from './store/index';
-import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom';
-import reducer from './reducer/index';
-import App from './App'
-import './index.css';
+import logo from './logo.svg';
+import './App.css';
 
-const store = configureStore(reducer,{
-	"todos" : [
-		{"id":1, "todo":"빨래하기", "complete":false},
-		{"id":2, "todo":"청소하기", "complete":false},
-		{"id":3, "todo":"공부하기", "complete":false}
-	]
-});
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Hello from V2</h1>
+      </header>
+    </div>
+  );
+}
 
-const render = () => {
-  ReactDOM.render(
-  	<Provider store={store}>
-	    <App/>
-    </Provider>,
-    document.getElementById('root')
-  )
-};
-
-store.subscribe(render);
-render();
-
+export default App;
 
 
 //import React from 'react';
