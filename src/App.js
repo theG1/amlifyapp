@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Hello from V2 최종윤 천재 </h1>
+        <h1>Hello from V2 최종윤 천재 윤석민 더 천재 </h1>
       </header>
     </div>
   );
